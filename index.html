@@ -1,7 +1,225 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body 
+{
+    background-color: #0a090a;
+    color : #d1d1d1;
+}
+/*this puts my name in place*/
+.TitleText {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+
+/*this is the menu button CSS*/
+.container {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    z-index: 2;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #d1d1d1;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* this handels the dev posts */
+
+.DevPost {
+    position: relative;
+    margin-top: 80px;
+    margin-left: 10%;
+    width: 80%;
+    text-align: center;
+}
+/*This is the drop down menu*/
+.overlay {
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.socialIcons{
+    position: fixed;
+    margin: auto;
+    bottom: 2%;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+}
+</style>
+
+<meta charset="utf-8">
+<title>Alex Jones Education Info</title>
+
+</head>
+<!-- =====================   HTML SECTION   ============================ -->
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<!-- this is the drop menu items -->
+<div id="myNav" class="overlay">
+  
+  <div class="overlay-content">
+    <a href="MVR.html">MVR</a>
+    <a href="index.html">Development Logs</a>
+    <a href="SB3K.html">SuperBounce 3000</a>
+  </div>
+</div>
+
+
+<div class="container" onclick="menuOpen(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+
+<div class="TitleText">
+    <h1 style="font-family:Helvetica;">Development Logs</h1> 
+</div>
+
+
+<!--=====================================================================
+====                          DEV LOGS                               ====
+======================================================================-->
+<div class="DevPost">
+    <h3 style="font-family:Helvetica;">
+        <hr>
+       <b>Development Log 01<BR></b>
+       <BR>
+        <b>Accomplishments<BR></b>
+This week I have worked on many systems for the game that build on top of one another. These things include, switches, sliders, movement, weapon systems, energy systems, as well as art. The switches work like real world light switches with an on and off orientation, the switches are activated or deactivated when an object collides with their hitbox. The switches return a boolean that can be used to turn on or shut off systems in our game, our first test for working with the switches was to turn a light on and off in our scene. The sliders are an object the player can grab and move between to positions, for our game we are using the sliders as tank controls to move our Titan as will as well as panels for distributing power to specific systems in the Titan. The sliders take a starting position and an ending position and return a value between 0-1 based on the sliders position between the two points. Tank style movement uses to sliders and adjusts their values so that they are in the range (-100 – 100) and combines their values to move the Titan forward or backwards. Rotation of the Titan takes the two slider values and uses their difference to apply the rotation. The weapons system cast a ray from the players hand 100 units into the game world. The weapons the will be fired then orientate themselves to be looking at this position and when the player pulls the right trigger the weapon will fire. Another system has a list of weapons attached to a specific game object, when the ray cast from the players hand passes through this object the weapons attached to it will be set to active, and only active weapons will fire. The energy system is the most interesting part of the project thus far. The player has multiple batteries that they can pull energy from, and the option to limit how much energy goes to specific systems of the Titan. The player can currently limit the amount of power given to the movement system affecting the max speed of the Titan. The Primary focus of the art this week was the Titan model. The main area of the model worked on was the core or the body of the mech, the area in which the players will be seated.<BR><BR>
+
+<b>Issues<BR></b>
+Very few issues popped up this week, we had to solve the exact math we wanted to use for movement and we had to learn some of the systems supplied to us by SteamVR mechanics. The math we wanted to use for movement was solved by taking the normal switch range of 0 – 1 and scaling it up to -100 – 100. The SteamVR mechanics were worked out by reading the source code, this provided us with more than enough information to be able to build our switches and sliders. The main example being the switches. Originally, we built the switches with two separate hit boxes. And when a SteamVR object passed in to one of the hit boxes it set the models orientation to the designated by that hit box. But after reading the source code we were able to make it one hitbox by having a method that was only called when the SteamVR object entered the bit box and not repeatedly while it was in the hit box. 
+
+
+    </h2> 
+</div>
+
+<!-- we don't need this in this site
+<div class="socialIcons">
+    <a href="mailto:alexjonesprogramming@gmail.com" class="fa fa-google"></a>
+    <a href="https://www.linkedin.com/in/alex-jones-500a31126/" target="_blank" class="fa fa-linkedin"></a>
+</div>
+
+-->
+
+<!-- =====================JAVA SCRIPT SECTION============================ -->
+<script>
+var isMenuOpen = false;
+
+function menuOpen(x) {
+    x.classList.toggle("change");
+    if(isMenuOpen)
+    {
+        closeNav();
+        isMenuOpen = false;
+    }
+    else
+    {
+        openNav();
+        isMenuOpen = true;
+    }
+}
+
+
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+</script>
+     
 </body>
 </html>
