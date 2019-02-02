@@ -21,7 +21,7 @@ $color5: #F24B4B;
 .strips {
   min-height: 100vh;
   text-align: center;
-  overflow: scroll;
+  overflow: hidden;
   color: white;
   
   &__strip {
@@ -29,7 +29,7 @@ $color5: #F24B4B;
     position: absolute;
     width: 20%;
     min-height: 100vh;
-    overflow: scroll;
+    overflow: hidden;
     cursor: pointer;
     @include easeOut;
     
@@ -55,7 +55,6 @@ $color5: #F24B4B;
     
     &:nth-child(1) {
       .strip__content {
-		overflow: scroll;
         background: $color1;
         transform: translate3d(-100%, 0, 0);
         animation-name: strip1;
